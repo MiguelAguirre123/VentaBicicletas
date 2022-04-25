@@ -1,3 +1,3 @@
 class Referencia:
 
-    __NombreReferencia:str
+    __NombreReferencia:st
