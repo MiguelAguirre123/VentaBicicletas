@@ -7,7 +7,7 @@ class Bicicleta:
     NumVelocidades:int
     Material:EnumMaterial
     Identificacion:str
-    TipoBici:EnumTipoBic
+    TipoBici:EnumTipoBici
     TamanoBici:str
     Valor:int
 
