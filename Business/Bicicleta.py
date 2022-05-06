@@ -1,18 +1,16 @@
-from EnumMaterial import EnumMaterial
-from EnumTipoBici import EnumTipoBici
+from enum import Enum
 
 class Bicicleta:
 
     NombreBici:str
     NumVelocidades:int
-    Material:EnumMaterial
+    Material:Enum
     Identificacion:str
-    TipoBici:EnumTipoBici
+    TipoBici:Enum
     TamanoBici:str
     Valor:int
 
-
-    def __init__(self, referencia, disenos[]):
+    def __init__(self, referencia, disenos):
 
         self.Relacion = referencia
         self.Disenos = disenos
