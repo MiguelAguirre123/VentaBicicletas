@@ -1,4 +1,5 @@
 class Diseno:
 
-    __Color1:str
-    __Color2:str
+    _Color1:str
+    _Color2:str
+    _Id:str

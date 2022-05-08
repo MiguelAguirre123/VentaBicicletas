@@ -1,11 +1,11 @@
 class InventarioReferencia:
 
-    __CantidadBodega:int
-    __CantidadMostrador:int
-    __CantidadVendida:int
+    _CantidadBodega:int
+    _CantidadMostrador:int
+    _CantidadVendida:int
 
 
     def __init__(self, referencia, disenos):
 
-        self.__Relacion = referencia
-        self.__Disenos = disenos
+        self._Relacion = referencia
+        self._Disenos = disenos
