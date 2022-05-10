@@ -6,7 +6,6 @@ class Empleado(Persona):
     _Sueldo:int
     _CorreoEmpresa:str
     _Login:str
-<<<<<<< HEAD
     _Contrasena:str
 
     def CrearEmpleado(self):
@@ -67,6 +66,3 @@ class Empleado(Persona):
                     print("No se encontro el archivo")
 
         return empleado, num
-=======
-    _Contraseña:str
->>>>>>> 66bd4a2f57680edb34ac7e8af71d54b60e88daac

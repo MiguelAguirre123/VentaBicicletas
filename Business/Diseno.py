@@ -4,7 +4,6 @@ class Diseno:
 
     _Color1:str
     _Color2:str
-<<<<<<< HEAD
     _IdDiseno:str
 
     def CrearDiseno(self):
@@ -45,6 +44,3 @@ class Diseno:
                     print("No se encontro el archivo")
 
         return diseno, num
-=======
-    _Id:str
->>>>>>> 66bd4a2f57680edb34ac7e8af71d54b60e88daac
