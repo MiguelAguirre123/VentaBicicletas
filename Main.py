@@ -4,11 +4,14 @@ from Business.EnumMaterial import EnumMaterial
 from Business.EnumTipoBici import EnumTipoBici
 from Business.Persona import Persona
 from Business.Referencia import Referencia
+from Business.Sede import Sede
 from Datos.BicicletaArchivo import BicicletaArchivo
 from Datos.DisenoArchivo import DisenoArchivo
 from Datos.PersonaArchivo import PersonaArchivo
 from Datos.ReferenciaArchivo import ReferenciaArchivo
 import pandas as pd
+
+from Datos.SedeArchivo import SedeArchivo
 
 num = 10000
 
@@ -23,124 +26,39 @@ while num != 0:
 
     if num == 1:
 
-        disenos = []
-        
-        while num != 0:
+        referencia = None
+        disenos = None
 
-            print("¿Que Quiere Hacer?")
-            print("0. Salir de gestor de Diseno: ")
-            print("1. Crear un diseno: ")
-            print("2. Buscar un diseno existente: ")
-            num = int(input("Introduzca un numero: "))
+        bicicleta = Bicicleta(referencia, disenos)
 
-            if num == 1:
-                
-                diseno = Diseno()
+        valores_bicicleta = bicicleta.CrearBicicleta()
+        bicicleta = valores_bicicleta[0]
 
-                diseno.__Color1 = input("Introduzca un primer color en hexadecimal: ")
-                diseno.__Color2 = input("Introduzca un segundo color en hexadecimal: ")
-                diseno.__Id = input("Introduzca la identificacion del diseno: ")
-
-                disenos.append(diseno.__Id)
-
-                disenoarchivo = DisenoArchivo()
-                disenoarchivo.GenerarTXT(diseno.__Color1, diseno.__Color2, diseno.__Id)   
-
-            elif num == 2:
-
-                nombre_archivo = input("Introduzca el nombre del archivo: ")
-
-                try:
-                    if pd.read_csv(f'Datos/Archivos_Guardados/Diseno/{nombre_archivo}.csv').empty == False:
-
-                        if disenos.count(nombre_archivo) == 0:
-
-                            disenos.append(nombre_archivo)
-                            print("Archivo cargado con exito")
-
-                        else:
-                            print("El archivo no se cargo porque ya fue subido anteriormente")
-
-                except FileNotFoundError:
-                    print("No se encontro el archivo")
-
-            elif num == 0 and len(disenos) == 0:
-                
-                print("Es necesario minimo un diseno para crear bicicleta")
-                num = 1
-
-        referencia_guardada = 0
-
-        while referencia_guardada == 0:
-
-            print("¿Que Quiere Hacer?")
-            print("1. Crear un referencia: ")
-            print("2. Buscar una referencia existente: ")
-            num = int(input("Introduzca un numero: "))
-
-            if num == 1:
-
-                referencia = Referencia()
-
-                referencia.__NombreReferencia = input("Introduzca el nombre de la referencia: ")
-
-                referenciaarchivo = ReferenciaArchivo()
-                referenciaarchivo.GenerarTXT(referencia.__NombreReferencia)     
-
-                referencia_guardada = referencia.__NombreReferencia
-
-            elif num == 2:
-
-                nombre_archivo = input("Introduzca el nombre del archivo: ")
-
-                try:
-                    if pd.read_csv(f'Datos/Archivos_Guardados/Referencia/{nombre_archivo}.csv').empty == False:
-
-                        referencia_guardada = referencia.__NombreReferencia
-
-                except FileNotFoundError:
-                    print("No se encontro el archivo")
-
-        bicicleta = Bicicleta(referencia_guardada, disenos)
-
-        bicicleta.NombreBici = input("Introduzca el nombre de la bicicleta: ")
-        bicicleta.Relacion = referencia_guardada
-        bicicleta.Disenos = disenos
-        bicicleta.NumVelocidades = input("Introduzca las velocidades de la bicicleta: ")
-        bicicleta.Material = EnumMaterial(int(input("Introduzca el numero de material: "))).name
-        bicicleta.Identificacion = input("Introduzca el ID de la bicicleta: ")
-        bicicleta.TipoBici = EnumTipoBici(int(input("Introduzca el numero del tipo de bicicleta: "))).name
-        bicicleta.TamanoBici = input("Introduzca el tamano de la bicicleta: ")
-        bicicleta.Valor = input("Introduzca el valor comercial de la bicicleta: ")
+        if valores_bicicleta[1] == 1:
+            print("Archivo creado con exito")
+        elif valores_bicicleta[1] == 2:
+            print("Archivo cargado con exito")
 
         bicicletaarchivo = BicicletaArchivo()
-        bicicletaarchivo.GenerarTXT(bicicleta.NombreBici, bicicleta.NumVelocidades,
-        bicicleta.Material, bicicleta.Identificacion, bicicleta.TipoBici,
-        bicicleta.TamanoBici, bicicleta.Valor, bicicleta.Relacion, disenos)
+        bicicletaarchivo.GenerarTXT(bicicleta)
         
     elif num == 2:
 
-        disenos == 0
+        inventariosede = None
+        empleados = None
 
-        while disenos == 0:
+        sede = Sede(inventariosede, empleados)
 
-            print("¿Que Quiere Hacer?")
-            print("1. Crear un diseno: ")
-            print("2. Buscar un diseno existente: ")
-            num = int(input("Introduzca un numero: "))
+        valores_sede = sede.CrearSede()
+        sede = valores_sede[0]
 
-            if num == 1:
-                
-                diseno = Diseno()
+        if valores_sede[1] == 1:
+            print("Archivo creado con exito")
+        elif valores_sede[1] == 2:
+            print("Archivo cargado con exito")
 
-                diseno.__Color1 = input("Introduzca un primer color en hexadecimal: ")
-                diseno.__Color2 = input("Introduzca un segundo color en hexadecimal: ")
-                diseno.__Id = input("Introduzca la identificacion del diseno: ")
-
-                disenos.append(diseno.__Id)
-
-                disenoarchivo = DisenoArchivo()
-                disenoarchivo.GenerarTXT(diseno.__Color1, diseno.__Color2, diseno.__Id)   
+        sedearchivo = SedeArchivo()
+        sedearchivo.GenerarTXT(sede)
 
                
 

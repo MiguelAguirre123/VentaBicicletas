@@ -2,8 +2,8 @@ from datetime import datetime
 
 class MetodoPago:
 
-    __NumOperacion:str
-    __FechaPago:datetime
-    __MonedaPago:str
-    __CuentaBeneficiario:str
-    __Monto:str
+    _NumOperacion:str
+    _FechaPago:datetime
+    _MonedaPago:str
+    _CuentaBeneficiario:str
+    _Monto:str

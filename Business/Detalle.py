@@ -1,8 +1,10 @@
+from Business.Bicicleta import Bicicleta
+
 class Detalle:
 
-    __CantidadProducto:int
+    _CantidadProducto:int
 
 
-    def __init__(self, producto):
+    def __init__(self, producto:Bicicleta):
 
-        self.__Producto = producto
+        self._Producto = producto
