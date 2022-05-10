@@ -4,14 +4,21 @@ from Business.EnumMaterial import EnumMaterial
 from Business.EnumTipoBici import EnumTipoBici
 from Business.Persona import Persona
 from Business.Referencia import Referencia
+<<<<<<< HEAD
 from Business.Sede import Sede
+=======
+>>>>>>> 66bd4a2f57680edb34ac7e8af71d54b60e88daac
 from Datos.BicicletaArchivo import BicicletaArchivo
 from Datos.DisenoArchivo import DisenoArchivo
 from Datos.PersonaArchivo import PersonaArchivo
 from Datos.ReferenciaArchivo import ReferenciaArchivo
 import pandas as pd
 
+<<<<<<< HEAD
 from Datos.SedeArchivo import SedeArchivo
+=======
+from Funciones.CrearBicicleta import CrearBicicleta
+>>>>>>> 66bd4a2f57680edb34ac7e8af71d54b60e88daac
 
 num = 10000
 
@@ -26,6 +33,7 @@ while num != 0:
 
     if num == 1:
 
+<<<<<<< HEAD
         referencia = None
         disenos = None
 
@@ -59,6 +67,33 @@ while num != 0:
 
         sedearchivo = SedeArchivo()
         sedearchivo.GenerarTXT(sede)
+=======
+        CrearBicicleta(num)
+        
+    elif num == 2:
+
+        disenos == 0
+
+        while disenos == 0:
+
+            print("¿Que Quiere Hacer?")
+            print("1. Crear un diseno: ")
+            print("2. Buscar un diseno existente: ")
+            num = int(input("Introduzca un numero: "))
+
+            if num == 1:
+                
+                diseno = Diseno()
+
+                diseno._Color1 = input("Introduzca un primer color en hexadecimal: ")
+                diseno._Color2 = input("Introduzca un segundo color en hexadecimal: ")
+                diseno._Id = input("Introduzca la identificacion del diseno: ")
+
+                disenos.append(diseno._Id)
+
+                disenoarchivo = DisenoArchivo()
+                disenoarchivo.GenerarTXT(diseno._Color1, diseno._Color2, diseno._Id)   
+>>>>>>> 66bd4a2f57680edb34ac7e8af71d54b60e88daac
 
                
 

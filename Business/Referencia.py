@@ -2,6 +2,7 @@ import pandas as pd
 
 class Referencia:
 
+<<<<<<< HEAD
     _NombreReferencia:str
 
     def CrearReferencia(self):
@@ -38,3 +39,6 @@ class Referencia:
                     print("No se encontro el archivo")
 
         return referencia, num
+=======
+    _NombreReferencia:str
+>>>>>>> 66bd4a2f57680edb34ac7e8af71d54b60e88daac

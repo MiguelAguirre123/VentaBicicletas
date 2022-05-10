@@ -10,11 +10,15 @@ class InventarioReferencia:
     _CantidadBodega:int
     _CantidadMostrador:int
     _CantidadVendida:int
+<<<<<<< HEAD
     _IdInventario:str
+=======
+>>>>>>> 66bd4a2f57680edb34ac7e8af71d54b60e88daac
 
 
     def __init__(self, referencia:Referencia, diseno:Diseno):
 
+<<<<<<< HEAD
         self._Referenciacion = referencia
         self._Diseno = diseno
 
@@ -93,3 +97,7 @@ class InventarioReferencia:
                     print("No se encontro el archivo")              
 
         return inventarioreferencia, num           
+=======
+        self._Relacion = referencia
+        self._Disenos = disenos
+>>>>>>> 66bd4a2f57680edb34ac7e8af71d54b60e88daac
