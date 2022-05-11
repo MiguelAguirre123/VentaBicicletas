@@ -2,7 +2,7 @@ from Business.Diseno import Diseno
 from Business.Referencia import Referencia
 import pandas as pd
 
-def BuscarArchivosBicicleta(nombre_archivo):
+def BuscarArchivosBicicleta(nombre_archivo:str):
 
     disenos = []
 

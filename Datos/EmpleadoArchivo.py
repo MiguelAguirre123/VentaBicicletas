@@ -5,14 +5,14 @@ class EmpleadoArchivo:
     
     def GenerarTXT(self, empleado:Empleado):
 
-        datos_empleado = {"|Nombre|":pd.Series(empleado.Nombre,index=[0]), "|Apellido|":pd.Series(empleado.Apellido,index=[0]),
-        "|ID Persona|":pd.Series(empleado.IdPersona,index=[0]), "|Telefono|":pd.Series(empleado.Telefono,index=list(range(len(empleado.Telefono)))),
-        "|Direccion|":pd.Series(empleado.Direccion,index=[0]), "|Sueldo|":pd.Series(empleado._Sueldo,index=[0]),
-        "|CorreoEmpresa|":pd.Series(empleado._CorreoEmpresa ,index=[0]), "|Login|":pd.Series(empleado._Login,index=[0]),
-        "|Contrasena|":pd.Series(empleado._Contrasena,index=[0])}
+        datos_empleado = {"|Nombre|":empleado.Nombre, "|Apellido|":empleado.Apellido,
+        "|ID Persona|":empleado.IdPersona, "|Telefono|":empleado.Telefono,
+        "|Direccion|":empleado.Direccion, "|Sueldo|":empleado._Sueldo,
+        "|CorreoEmpresa|":empleado._CorreoEmpresa, "|Login|":empleado._Login,
+        "|Contrasena|":empleado._Contrasena}
 
-        nombre_archivo = f'Datos/Archivos_Guardados/Empleado/{empleado.Nombre} {empleado.Apellido}.csv'
-        df = pd.DataFrame(data=datos_empleado, index=range(len(empleado.Telefono)))
+        nombre_archivo = f'Datos/Archivos_Guardados/Empleado/{empleado.IdPersona}.csv'
+        df = pd.DataFrame(data=datos_empleado, index=[0])
 
         print(df)
         df.to_csv(nombre_archivo, index=False) 

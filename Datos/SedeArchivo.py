@@ -10,7 +10,7 @@ class SedeArchivo:
         datos_sede = {"|Nombre|":sede.Nombre, "|Direccion|":sede.Direccion,
         "|Ciudad|":sede.Ciudad, "|ID Sede|":sede.IdSede}  
 
-        nombre_archivo = f'Datos/Archivos_Guardados/Sede/{sede.Nombre}.csv'
+        nombre_archivo = f'Datos/Archivos_Guardados/Sede/{sede.IdSede}.csv'
         df = pd.DataFrame(data=datos_sede,index=[0])
 
         contador_inventarioreferencia:InventarioReferencia
@@ -24,7 +24,7 @@ class SedeArchivo:
         
         for contador_empleado in sede.Empleados:
 
-            df_empleado = pd.read_csv(f'Datos/Archivos_Guardados/Empleado/{contador_empleado.Nombre} {contador_empleado.Apellido}.csv')
+            df_empleado = pd.read_csv(f'Datos/Archivos_Guardados/Empleado/{contador_empleado.IdPersona}.csv')
             df_empleado = df_empleado.add_suffix(f'|{sede.Empleados.index(contador_empleado)+1}|')
             df = pd.merge(df, df_empleado, right_index=True, left_index=True, how='outer')                 
 

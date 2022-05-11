@@ -90,9 +90,9 @@ class Sede:
                     valores_empleado = empleado.CrearEmpleado()
                     empleado = valores_empleado[0]
 
-                    empleado_ID.append(f'{empleado.Nombre} {empleado.Apellido}')
+                    empleado_ID.append(empleado.IdPersona)
 
-                    if empleado_ID.count(f'{empleado.Nombre} {empleado.Apellido}') == 1:
+                    if empleado_ID.count(empleado.IdPersona) == 1:
                         empleados.append(empleado)
 
                         if valores_empleado[1] == 1:
@@ -106,7 +106,7 @@ class Sede:
 
                         for contador_empleados in empleados:
 
-                            if contador_empleados.Nombre == empleado.Nombre and contador_empleados.Apellido == empleado.Apellido:
+                            if contador_empleados.IdPersona == empleado.IdPersona:
 
                                 empleados[empleados.index(contador_empleados)] = empleado
 
@@ -145,20 +145,17 @@ class Sede:
                         
                         valores_archivossede = BuscarArchivosSede(nombre_archivo)
 
-                        referencia = valores_archivossede[0]
-                        disenos = valores_archivossede[1]
+                        inventariosede = valores_archivossede[0]
+                        empleados = valores_archivossede[1]
 
-                        bicicleta = Bicicleta(referencia, disenos)
+                        sede = Sede(inventariosede, empleados)
 
-                        bicicleta.NombreBici = str(df_bicicleta["|NombreBici|"][0])
-                        bicicleta.Referenciacion = referencia
-                        bicicleta.Disenos = disenos
-                        bicicleta.NumVelocidades = int(df_bicicleta["|NumVelocidades|"][0])
-                        bicicleta.Material = str(df_bicicleta["|Material|"][0])
-                        bicicleta.IdBicicleta = str(df_bicicleta["|ID|"][0])
-                        bicicleta.TipoBici = str(df_bicicleta["|TipoBici|"][0])
-                        bicicleta.TamanoBici = str(df_bicicleta["|TamanoBici|"][0])
-                        bicicleta.Valor = int(df_bicicleta["|Valor|"][0])
+                        sede.Nombre = str(df_sede["|Nombre|"][0]) 
+                        sede.Direccion = str(df_sede["|Direccion|"][0])
+                        sede.Ciudad = str(df_sede["|Ciudad|"][0])
+                        sede.IdSede = str(df_sede["|ID Sede|"][0])
+                        sede.InventarioSede = inventariosede
+                        sede.Empleados = empleados
 
                 except FileNotFoundError:
                     print("No se encontro el archivo")   

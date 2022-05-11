@@ -1,17 +1,18 @@
 from Business.Bicicleta import Bicicleta
 from Business.Diseno import Diseno
+from Business.Factura import Factura
 from Business.EnumMaterial import EnumMaterial
 from Business.EnumTipoBici import EnumTipoBici
 from Business.Persona import Persona
 from Business.Referencia import Referencia
 from Business.Sede import Sede
 from Datos.BicicletaArchivo import BicicletaArchivo
+from Datos.FacturaArchivo import FacturaArchivo
 from Datos.DisenoArchivo import DisenoArchivo
 from Datos.PersonaArchivo import PersonaArchivo
 from Datos.ReferenciaArchivo import ReferenciaArchivo
-import pandas as pd
-
 from Datos.SedeArchivo import SedeArchivo
+import pandas as pd
 
 num = 10000
 
@@ -21,6 +22,7 @@ while num != 0:
     print("0. Para salirse del programa")
     print("1. Para crear Bicicleta")
     print("2. Para crear Sede")
+    print("3. Para crear Factura")
 
     num = int(input("Introduzca un numero: "))
 
@@ -59,6 +61,26 @@ while num != 0:
 
         sedearchivo = SedeArchivo()
         sedearchivo.GenerarTXT(sede)
+
+    elif num == 3:
+
+        detalle = None
+        persona = None
+        metodopago = None
+
+        factura = Factura(detalle, persona, metodopago)
+
+        valores_factura = factura.CrearFactura()
+        factura = valores_factura[0]
+
+        if valores_factura[1] == 1:
+            print("Archivo creado con exito")
+        elif valores_factura[1] == 2:
+            print("Archivo cargado con exito")
+
+        facturaarchivo = FacturaArchivo()
+        facturaarchivo.GenerarTXT(factura)
+
 
                
 

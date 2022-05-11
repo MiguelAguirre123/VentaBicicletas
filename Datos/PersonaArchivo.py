@@ -1,12 +1,14 @@
+from Business.Persona import Persona
 import pandas as pd
 
 class PersonaArchivo:
     
-    def GenerarTXT(self, nombre, apellido, id, telefono, direccion):
-        d = {"|Nombre|":pd.Series(nombre,index=[1]), "|Apellido|":pd.Series(apellido,index=[1]),
-        "|ID|":id, "|Telefono|":pd.Series(telefono,index=list(range(len(telefono)+1))),
-        "|Direccion|":pd.Series(direccion,index=[1])}
+    def GenerarTXT(self, persona:Persona):
+        datos_persona = {"|Nombre|":persona.Nombre, "|Apellido|":persona.Apellido,
+        "|ID Persona|":persona.IdPersona, "|Telefono|":persona.Telefono, "|Direccion|":persona.Direccion}
 
-        nombre_archivo = f'Datos/Archivos_Guardados/Persona/{nombre} {apellido}.csv'
-        df = pd.DataFrame(data=d,index=range(len(telefono)+1))
+        nombre_archivo = f'Datos/Archivos_Guardados/Persona/{persona.IdPersona}.csv'
+        df = pd.DataFrame(data=datos_persona, index=[0])
+
+        print(df)
         df.to_csv(nombre_archivo, index=False) 

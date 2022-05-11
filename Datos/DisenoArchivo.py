@@ -9,5 +9,6 @@ class DisenoArchivo:
 
         nombre_archivo = f'Datos/Archivos_Guardados/Diseno/{diseno._IdDiseno}.csv'
         df = pd.DataFrame(data=datos_diseno,index=[0])
+        
         print(df)
         df.to_csv(nombre_archivo, index=False) 
