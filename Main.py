@@ -1,18 +1,29 @@
 from Business.Bicicleta import Bicicleta
+from Business.CuentaAhorro import CuentaAhorro
+from Business.Detalle import Detalle
 from Business.Diseno import Diseno
+from Business.Efectivo import Efectivo
+from Business.Empleado import Empleado
 from Business.Factura import Factura
-from Business.EnumMaterial import EnumMaterial
-from Business.EnumTipoBici import EnumTipoBici
+from Business.InventarioReferencia import InventarioReferencia
 from Business.Persona import Persona
 from Business.Referencia import Referencia
 from Business.Sede import Sede
+from Business.TarjetaCredito import TarjetaCredito
+from Business.TarjetaDebito import TarjetaDebito
 from Datos.BicicletaArchivo import BicicletaArchivo
+from Datos.CuentaAhorroArchivo import CuentaAhorroArchivo
+from Datos.DetalleArchivo import DetalleArchivo
+from Datos.EfectivoArchivo import EfectivoArchivo
+from Datos.EmpleadoArchivo import EmpleadoArchivo
 from Datos.FacturaArchivo import FacturaArchivo
 from Datos.DisenoArchivo import DisenoArchivo
+from Datos.InventarioReferenciaArchivo import InventarioReferenciaArchivo
 from Datos.PersonaArchivo import PersonaArchivo
 from Datos.ReferenciaArchivo import ReferenciaArchivo
 from Datos.SedeArchivo import SedeArchivo
-import pandas as pd
+from Datos.TarjetaCreditoArchivo import TarjetaCreditoArchivo
+from Datos.TarjetaDebitoArchivo import TarjetaDebitoArchivo
 
 num = 10000
 
@@ -23,7 +34,13 @@ while num != 0:
     print("1. Para crear Bicicleta")
     print("2. Para crear Sede")
     print("3. Para crear Factura")
-
+    print("4. Para crear Diseno")
+    print("5. Para crear Referencia")
+    print("6. Para crear Inventario")
+    print("7. Para crear MetodoPago")
+    print("8. Para crear Detalle")
+    print("9. Para crear Empleado")
+    print("10. Para crear Persona")
     num = int(input("Introduzca un numero: "))
 
     if num == 1:
@@ -81,68 +98,177 @@ while num != 0:
         facturaarchivo = FacturaArchivo()
         facturaarchivo.GenerarTXT(factura)
 
+    elif num == 4:
 
-               
+        diseno = Diseno()
 
+        valores_diseno = diseno.CrearDiseno()
+        diseno = valores_diseno[0]
 
+        if valores_diseno[1] == 1:
+            print("Archivo creado con exito")
+        elif valores_diseno[1] == 2:
+            print("Archivo cargado con exito")
 
+        disenoarchivo = DisenoArchivo()
+        disenoarchivo.GenerarTXT(diseno)
 
-#persona = Persona()
+    elif num == 5:
 
-#persona.Nombre = input()
-#persona.Apellido = input()
-#persona.Id = input()
-#persona.Telefono = list(map(int, input().rstrip().split()))
-#persona.Direccion = input()
+        referencia = Referencia()
 
-#personaarchivo = PersonaArchivo()
-#personaarchivo.GenerarTXT(persona.Nombre, persona.Apellido, persona.Id, persona.Telefono, persona.Direccion)
+        valores_referencia = referencia.CrearReferencia()
+        referencia = valores_referencia[0]
 
-#disenos = []
+        if valores_referencia[1] == 1:
+            print("Archivo creado con exito")
+        elif valores_referencia[1] == 2:
+            print("Archivo cargado con exito")
 
-#for i in range(3):
-    #diseno = Diseno()
+        referenciaarchivo = ReferenciaArchivo()
+        referenciaarchivo.GenerarTXT(referencia)
 
-    #diseno.__Color1 = input()
-    #diseno.__Color2 = input()
-    #diseno.__Id = input()
+    elif num == 6:
 
-    #disenos.append(diseno.__Id)
+        inventarioreferencia = InventarioReferencia()
 
-    #disenoarchivo = DisenoArchivo()
-    #disenoarchivo.GenerarTXT(diseno.__Color1, diseno.__Color2, diseno.__Id)
+        valores_inventarioreferencia = inventarioreferencia.CrearInventarioReferencia()
+        referencia = valores_inventarioreferencia[0]
 
-#print(disenos)
+        if valores_inventarioreferencia[1] == 1:
+            print("Archivo creado con exito")
+        elif valores_inventarioreferencia[1] == 2:
+            print("Archivo cargado con exito")
 
-#referencia = Referencia()
+        inventarioreferenciaarchivo = InventarioReferenciaArchivo()
+        inventarioreferenciaarchivo.GenerarTXT(inventarioreferencia)
 
-#referencia.__NombreReferencia = input()
+    elif num == 7:
 
-#referenciaarchivo = ReferenciaArchivo()
-#referenciaarchivo.GenerarTXT(referencia.__NombreReferencia)
-#df_referencia = pd.read_csv(f'Datos/Archivos_Guardados/Referencia/{referencia.__NombreReferencia}.csv')
+        metodo = None
 
-#referencia_guardada = referencia.__NombreReferencia
+        while metodo == None:
 
-#bicicleta = Bicicleta(referencia_guardada, disenos)
+            print("¿Con cual medio de pago se realizara la transaccion?")
+            print("1. Efectivo")
+            print("2. Cuenta de Ahorro")
+            print("3. Tarjeta de Debito") 
+            print("4. Tarjeta de Credito")
+            num = int(input("Introduzca un numero: "))
 
-#bicicleta.NombreBici = input()
-#bicicleta.Relacion = referencia_guardada
-#bicicleta.Disenos = disenos
-#bicicleta.NumVelocidades = input()
-#bicicleta.Material = EnumMaterial(int(input())).name
-#bicicleta.Identificacion = input()
-#bicicleta.TipoBici = EnumTipoBici(int(input())).name
-#bicicleta.TamanoBici = input()
-#bicicleta.Valor = input()
+            if num == 1:
 
-#bicicletaarchivo = BicicletaArchivo()
-#bicicletaarchivo.GenerarTXT(bicicleta.NombreBici, bicicleta.NumVelocidades,
-#bicicleta.Material, bicicleta.Identificacion, bicicleta.TipoBici,
-#bicicleta.TamanoBici, bicicleta.Valor, bicicleta.Relacion, disenos)
+                efectivo = Efectivo()
 
-#df_refer= pd.read_csv(f'Datos/Archivos_Guardados/Bicicleta/{bicicleta.NombreBici}.csv')
-#print(df_refer)
+                valores_efectivo = efectivo.CrearEfectivo()
 
-#df = pd.read_csv('Persona.csv') 
-#print(df["Nombre"][0])
+                efectivo = valores_efectivo[0]
+
+                if valores_efectivo[1] == 1:
+                    print("Archivo creado con exito")
+                elif valores_efectivo[1] == 2:
+                    print("Archivo cargado con exito")
+
+                efectivoarchivo = EfectivoArchivo()
+                efectivoarchivo.GenerarTXT(efectivo)
+
+                metodo = efectivo
+
+            elif num == 2:
+
+                cuentaahorro = CuentaAhorro()
+
+                valores_cuentaahorro = cuentaahorro.CrearCuentaAhorro()
+
+                cuentaahorro = valores_cuentaahorro[0]
+
+                if valores_cuentaahorro[1] == 1:
+                    print("Archivo creado con exito")
+                elif valores_cuentaahorro[1] == 2:
+                    print("Archivo cargado con exito")
+
+                cuentaahorroarchivo = CuentaAhorroArchivo()
+                cuentaahorroarchivo.GenerarTXT(cuentaahorro)
+
+                metodo = cuentaahorro
+
+            elif num == 3:
+
+                tarjetadebito = TarjetaDebito()
+
+                valores_tarjetadebito = tarjetadebito.CrearTarjetaDebito()
+
+                tarjetadebito = valores_tarjetadebito[0]
+
+                if valores_tarjetadebito[1] == 1:
+                    print("Archivo creado con exito")
+                elif valores_tarjetadebito[1] == 2:
+                    print("Archivo cargado con exito")
+
+                tarjetadebitoarchivo = TarjetaDebitoArchivo()
+                tarjetadebitoarchivo.GenerarTXT(tarjetadebito)
+
+                metodo = tarjetadebito
+                
+            elif num == 4:
+
+                tarjetacredito = TarjetaCredito()
+
+                valores_tarjetacredito = tarjetacredito.CrearTarjetaCredito()
+
+                tarjetacredito = valores_tarjetacredito[0]
+
+                if valores_tarjetacredito[1] == 1:
+                    print("Archivo creado con exito")
+                elif valores_tarjetacredito[1] == 2:
+                    print("Archivo cargado con exito")
+
+                tarjetacreditoarchivo = TarjetaCreditoArchivo()
+                tarjetacreditoarchivo.GenerarTXT(tarjetacredito)
+
+                metodo = tarjetacredito
+
+    elif num == 8:
+
+        detalle = Detalle()
+
+        valores_detalle = detalle.CrearDetalle()
+        detalle = valores_detalle[0]
+
+        if valores_detalle[1] == 1:
+            print("Archivo creado con exito")
+        elif valores_detalle[1] == 2:
+            print("Archivo cargado con exito")
+
+        detallearchivo = DetalleArchivo()
+        detallearchivo.GenerarTXT(detalle)
+
+    elif num == 9:
+
+        empleado = Empleado()
+
+        valores_empleado = empleado.CrearEmpleado()
+        empleado = valores_empleado[0]
+
+        if valores_empleado[1] == 1:
+            print("Archivo creado con exito")
+        elif valores_empleado[1] == 2:
+            print("Archivo cargado con exito")
+
+        empleadoarchivo = EmpleadoArchivo()
+        empleadoarchivo.GenerarTXT(empleado)
+
+    elif num == 10:
+
+        persona = Persona()
+
+        valores_persona = persona.CrearPersona()
+        persona = valores_persona[0]
+
+        if valores_persona[1] == 1:
+            print("Archivo creado con exito")
+        elif valores_persona[1] == 2:
+            print("Archivo cargado con exito")
+
+        personaarchivo = PersonaArchivo()
+        personaarchivo.GenerarTXT(persona)

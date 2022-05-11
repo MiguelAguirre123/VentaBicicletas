@@ -11,6 +11,7 @@ from Datos.EfectivoArchivo import EfectivoArchivo
 from Datos.PersonaArchivo import PersonaArchivo
 from Datos.TarjetaCreditoArchivo import TarjetaCreditoArchivo
 from Datos.TarjetaDebitoArchivo import TarjetaDebitoArchivo
+from Funciones.BuscarArchivosFactura import BuscarArchivosFactura
 import pandas as pd
 
 class Factura:
@@ -198,22 +199,19 @@ class Factura:
                         
                         df_factura = pd.read_csv(f'Datos/Archivos_Guardados/Factura/{nombre_archivo}.csv')
                         
-                        valores_archivosbicicleta = BuscarArchivosBicicleta(nombre_archivo)
+                        valores_archivosfactura = BuscarArchivosFactura(nombre_archivo)
 
-                        referencia = valores_archivosbicicleta[0]
-                        disenos = valores_archivosbicicleta[1]
+                        detalles = valores_archivosfactura[0]
+                        persona = valores_archivosfactura[1]
+                        metodo = valores_archivosfactura[2]
 
-                        bicicleta = Bicicleta(referencia, disenos)
+                        factura = Factura(detalles, persona, metodo)
 
-                        bicicleta.NombreBici = str(df_bicicleta["|NombreBici|"][0])
-                        bicicleta.Referenciacion = referencia
-                        bicicleta.Disenos = disenos
-                        bicicleta.NumVelocidades = int(df_bicicleta["|NumVelocidades|"][0])
-                        bicicleta.Material = str(df_bicicleta["|Material|"][0])
-                        bicicleta.IdBicicleta = str(df_bicicleta["|ID|"][0])
-                        bicicleta.TipoBici = str(df_bicicleta["|TipoBici|"][0])
-                        bicicleta.TamanoBici = str(df_bicicleta["|TamanoBici|"][0])
-                        bicicleta.Valor = int(df_bicicleta["|Valor|"][0])
+                        factura._DetallesFactura = detalles
+                        factura._DatosCliente = persona
+                        factura._ValorTotal = int(df_factura["|ValorTotal|"][0])
+                        factura._CodigoFactura = str(df_factura["|CodigoFactura|"][0])
+                        factura._MetodoPagar = metodo
 
                 except FileNotFoundError:
                     print("No se encontro el archivo")
