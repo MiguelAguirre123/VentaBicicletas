@@ -1,16 +1,3 @@
-from Business.Bicicleta import Bicicleta
-from Business.CuentaAhorro import CuentaAhorro
-from Business.Detalle import Detalle
-from Business.Diseno import Diseno
-from Business.Efectivo import Efectivo
-from Business.Empleado import Empleado
-from Business.Factura import Factura
-from Business.InventarioReferencia import InventarioReferencia
-from Business.Persona import Persona
-from Business.Referencia import Referencia
-from Business.Sede import Sede
-from Business.TarjetaCredito import TarjetaCredito
-from Business.TarjetaDebito import TarjetaDebito
 from Datos.BicicletaArchivo import BicicletaArchivo
 from Datos.CuentaAhorroArchivo import CuentaAhorroArchivo
 from Datos.DetalleArchivo import DetalleArchivo
@@ -24,6 +11,19 @@ from Datos.ReferenciaArchivo import ReferenciaArchivo
 from Datos.SedeArchivo import SedeArchivo
 from Datos.TarjetaCreditoArchivo import TarjetaCreditoArchivo
 from Datos.TarjetaDebitoArchivo import TarjetaDebitoArchivo
+from Funciones.GestionarBicicleta import GestionarBicicleta
+from Funciones.GestionarCuentaAhorro import GestionarCuentaAhorro
+from Funciones.GestionarDetalle import GestionarDetalle
+from Funciones.GestionarDiseno import GestionarDiseno
+from Funciones.GestionarEfectivo import GestionarEfectivo
+from Funciones.GestionarEmpleado import GestionarEmpleado
+from Funciones.GestionarFactura import GestionarFactura
+from Funciones.GestionarInventarioReferencia import GestionarInventarioReferencia
+from Funciones.GestionarPersona import GestionarPersona
+from Funciones.GestionarReferencia import GestionarReferencia
+from Funciones.GestionarSede import GestionarSede
+from Funciones.GestionarTarjetaCredito import GestionarTarjetaCredito
+from Funciones.GestionarTarjetaDebito import GestionarTarjetaDebito
 
 num = 10000
 
@@ -45,12 +45,7 @@ while num != 0:
 
     if num == 1:
 
-        referencia = None
-        disenos = None
-
-        bicicleta = Bicicleta(referencia, disenos)
-
-        valores_bicicleta = bicicleta.CrearBicicleta()
+        valores_bicicleta = GestionarBicicleta()
         bicicleta = valores_bicicleta[0]
 
         if valores_bicicleta[1] == 1:
@@ -63,12 +58,7 @@ while num != 0:
         
     elif num == 2:
 
-        inventariosede = None
-        empleados = None
-
-        sede = Sede(inventariosede, empleados)
-
-        valores_sede = sede.CrearSede()
+        valores_sede = GestionarSede()
         sede = valores_sede[0]
 
         if valores_sede[1] == 1:
@@ -81,13 +71,7 @@ while num != 0:
 
     elif num == 3:
 
-        detalle = None
-        persona = None
-        metodopago = None
-
-        factura = Factura(detalle, persona, metodopago)
-
-        valores_factura = factura.CrearFactura()
+        valores_factura = GestionarFactura()
         factura = valores_factura[0]
 
         if valores_factura[1] == 1:
@@ -100,9 +84,7 @@ while num != 0:
 
     elif num == 4:
 
-        diseno = Diseno()
-
-        valores_diseno = diseno.CrearDiseno()
+        valores_diseno = GestionarDiseno()
         diseno = valores_diseno[0]
 
         if valores_diseno[1] == 1:
@@ -115,9 +97,7 @@ while num != 0:
 
     elif num == 5:
 
-        referencia = Referencia()
-
-        valores_referencia = referencia.CrearReferencia()
+        valores_referencia = GestionarReferencia()
         referencia = valores_referencia[0]
 
         if valores_referencia[1] == 1:
@@ -130,10 +110,8 @@ while num != 0:
 
     elif num == 6:
 
-        inventarioreferencia = InventarioReferencia()
-
-        valores_inventarioreferencia = inventarioreferencia.CrearInventarioReferencia()
-        referencia = valores_inventarioreferencia[0]
+        valores_inventarioreferencia = GestionarInventarioReferencia()
+        inventarioreferencia = valores_inventarioreferencia[0]
 
         if valores_inventarioreferencia[1] == 1:
             print("Archivo creado con exito")
@@ -158,10 +136,7 @@ while num != 0:
 
             if num == 1:
 
-                efectivo = Efectivo()
-
-                valores_efectivo = efectivo.CrearEfectivo()
-
+                valores_efectivo = GestionarEfectivo()
                 efectivo = valores_efectivo[0]
 
                 if valores_efectivo[1] == 1:
@@ -176,10 +151,7 @@ while num != 0:
 
             elif num == 2:
 
-                cuentaahorro = CuentaAhorro()
-
-                valores_cuentaahorro = cuentaahorro.CrearCuentaAhorro()
-
+                valores_cuentaahorro = GestionarCuentaAhorro()
                 cuentaahorro = valores_cuentaahorro[0]
 
                 if valores_cuentaahorro[1] == 1:
@@ -194,10 +166,7 @@ while num != 0:
 
             elif num == 3:
 
-                tarjetadebito = TarjetaDebito()
-
-                valores_tarjetadebito = tarjetadebito.CrearTarjetaDebito()
-
+                valores_tarjetadebito = GestionarTarjetaDebito()
                 tarjetadebito = valores_tarjetadebito[0]
 
                 if valores_tarjetadebito[1] == 1:
@@ -212,10 +181,7 @@ while num != 0:
                 
             elif num == 4:
 
-                tarjetacredito = TarjetaCredito()
-
-                valores_tarjetacredito = tarjetacredito.CrearTarjetaCredito()
-
+                valores_tarjetacredito = GestionarTarjetaCredito()
                 tarjetacredito = valores_tarjetacredito[0]
 
                 if valores_tarjetacredito[1] == 1:
@@ -230,9 +196,7 @@ while num != 0:
 
     elif num == 8:
 
-        detalle = Detalle()
-
-        valores_detalle = detalle.CrearDetalle()
+        valores_detalle = GestionarDetalle()
         detalle = valores_detalle[0]
 
         if valores_detalle[1] == 1:
@@ -245,9 +209,7 @@ while num != 0:
 
     elif num == 9:
 
-        empleado = Empleado()
-
-        valores_empleado = empleado.CrearEmpleado()
+        valores_empleado = GestionarEmpleado()
         empleado = valores_empleado[0]
 
         if valores_empleado[1] == 1:
@@ -260,9 +222,7 @@ while num != 0:
 
     elif num == 10:
 
-        persona = Persona()
-
-        valores_persona = persona.CrearPersona()
+        valores_persona = GestionarPersona()
         persona = valores_persona[0]
 
         if valores_persona[1] == 1:

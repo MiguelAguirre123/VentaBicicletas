@@ -8,16 +8,13 @@ class MetodoPago:
     _CuentaBeneficiario:str
     _Monto:str
 
-    def CrearMetodoPago(self):
+    def CrearMetodoPago(self, numoperacion:str, fechapago:date, monedapago:str, cuentabeneficiario:str, monto:str):
 
-        self._NumOperacion = input("Introduzca el numero de operacion: ")
+        self._NumOperacion = numoperacion
+        self._FechaPago = fechapago
+        self._MonedaPago = monedapago
+        self._CuentaBeneficiario = cuentabeneficiario
+        self._Monto = monto
 
-        ano = int(input("Introduzca el ano en la que se realiza la transaccion: "))
-        mes = int(input("Introduzca el mes en la que se realiza la transaccion: "))
-        dia = int(input("Introduzca el dia en la que se realiza la transaccion: "))
-
-        self._FechaPago = date(ano, mes, dia)
-
-        self._MonedaPago = input("Introduzca el tipo de moneda con la que se va a pagar: ")
-        self._CuentaBeneficiario = input("Introduzca la cuenta del beneficiario: ")
-        self._Monto = input("Introduzca el monto: ")
+    def CrearPago(self):
+        pass

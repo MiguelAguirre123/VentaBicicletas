@@ -42,8 +42,7 @@ class FacturaArchivo:
                                 df = pd.merge(df_tarjetacredito, df, right_index=True, left_index=True, how='outer')
 
                         except FileNotFoundError:
-
-                            print("error")
+                            pass
 
         contador_detalle:Detalle
 
